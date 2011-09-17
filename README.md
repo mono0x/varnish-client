@@ -1,6 +1,6 @@
 # varnish-client
 
-varnish-client is an HTTP client of Varnish.
+varnish-client is a HTTP client of Varnish.
 
 # Install
 
