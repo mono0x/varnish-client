@@ -16,7 +16,7 @@ module Varnish
     end
 
     def fetch(path, headers = {})
-      req = Net::HTTP::Get.new(path)
+      req = Net::HTTP::Get.new(path, headers)
       req['Host'] = @target.host
       res = @http.request(req)
       return nil unless res.code == '200'
