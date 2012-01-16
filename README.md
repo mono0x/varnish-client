@@ -12,21 +12,13 @@ Install the gem.
 
     $ bundle install
 
-Add the following subroutine to VCL.
+Download purge.vcl.
 
-    acl purge {
-      "localhost";
-    }
+    $ sudo wget https://raw.github.com/mono0x/varnish-client/master/purge.vcl
 
-    sub vcl_recv {
-      if (req.request == "PURGE") {
-        if (!client.ip ~ purge) {
-          error 405 "Not allowed.";
-        }
-        ban("req.http.host == " + req.http.host + " && req.url ~ " + req.url);
-        error 200 "Purged.";
-      }
-    }
+Add the following line to the main VCL file.
+
+    include "/path/to/purge.vcl";
 
 # Getting started
 
